@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Button from './components/Button'
+import { motion } from 'framer-motion';
 
 const defaultEndpoint = `https://rickandmortyapi.com/api/character/`;
 
@@ -90,9 +90,23 @@ export default function Home({ data }) {
       </Head>
 
       <main>
-        <h1 className="title">
-          Wubba Lubba Dub Dub!
-        </h1>
+        <motion.div initial="hidden" animate="visible" variants={{
+            hidden: {
+              scale: .8,
+              opacity: 0
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: .4
+              }
+            },
+        }}>
+          <h1 className="title">
+            Wubba Lubba Dub Dub!
+          </h1>
+        </motion.div>
 
         <p className="description">
           Rick and Morty Character Wiki
@@ -108,14 +122,29 @@ export default function Home({ data }) {
           {results.map(result => {
             const { id, name, image } = result;
             return (
-              <li key={id} className="card">
+              <motion.li initial="hidden" animate="visible" variants={{
+                  hidden: {
+                    scale: .8,
+                    opacity: 0
+                  },
+                  visible: {
+                    scale: 1,
+                    opacity: 1,
+                    transition: {
+                      delay: .4
+                    }
+                  },
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              key={id} className="card">
                 <Link href="/character/[id]" as={`/character/${id}`}>
                   <a>
                     <img src={image} alt={`${name} Thumbnail`} />
                     <h3>{ name }</h3>
                   </a>
                 </Link>
-              </li>
+              </motion.li>
             )
           })}
         </ul>
@@ -137,7 +166,7 @@ export default function Home({ data }) {
       </footer>
       <script src='https://unpkg.com/@cesarbr/macaw/dist/macaw.js'></script>
 
-      <style jsx>{`
+      <style>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
