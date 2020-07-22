@@ -101,7 +101,7 @@ export default function Home({ data }) {
         <form className="search" onSubmit={handleOnSubmitSearch}>
           <input name="query" type="search" />
           <button>Search</button>
-          <Button>Theme Test</Button>
+          <m-button class="my-button" title="Button default">Search</m-button>
         </form>
 
         <ul className="grid">
