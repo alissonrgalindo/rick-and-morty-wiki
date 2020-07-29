@@ -90,6 +90,18 @@ export default function Home({ data }) {
       </Head>
 
       <main>
+      <section class='row content'>
+      {results.map(result => {
+            const { id, name, image } = result;
+            return (
+              <m-avatar key={id} source={image} data-alt={name}></m-avatar>
+            )
+          })}
+        <h2>Avatar <span class='light-font'>Image and Initials</span></h2>
+        <m-avatar source="https://cms.qz.com/wp-content/uploads/2018/12/earring2.png" data-alt="Alternative description"></m-avatar>
+        <m-avatar source="https://cms.qz.com/wp-content/uploads/2018/12" data-alt="Invalid image ULR"></m-avatar>
+        <m-avatar source="Mary Smith Montgomery"></m-avatar>
+      </section>
         <motion.div initial="hidden" animate="visible" variants={{
             hidden: {
               scale: .8,
@@ -114,7 +126,7 @@ export default function Home({ data }) {
 
         <form className="search" onSubmit={handleOnSubmitSearch}>
           <input name="query" type="search" />
-          <button>Search</button>
+          <button> <m-icon name="arrows-top-bottom" title="Expand screen"></m-icon> Search</button>
           <m-button class="my-button" title="Button default">Search</m-button>
         </form>
 
