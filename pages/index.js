@@ -97,10 +97,6 @@ export default function Home({ data }) {
               <m-avatar key={id} source={image} data-alt={name}></m-avatar>
             )
           })}
-        <h2>Avatar <span class='light-font'>Image and Initials</span></h2>
-        <m-avatar source="https://cms.qz.com/wp-content/uploads/2018/12/earring2.png" data-alt="Alternative description"></m-avatar>
-        <m-avatar source="https://cms.qz.com/wp-content/uploads/2018/12" data-alt="Invalid image ULR"></m-avatar>
-        <m-avatar source="Mary Smith Montgomery"></m-avatar>
       </section>
         <motion.div initial="hidden" animate="visible" variants={{
             hidden: {
